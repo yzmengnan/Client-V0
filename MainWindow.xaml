@@ -1,0 +1,157 @@
+﻿<Window x:Class="盾构机机器人操作界面V0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:盾构机机器人操作界面V0"
+        mc:Ignorable="d"
+        Title="操作界面V0" Height="600" Width="840" 
+          WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" >
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="380" />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="0" VerticalAlignment="Center" Orientation="Horizontal">
+                <Button x:Name="连接" FontSize="14" Content="{Binding Var_state}" Click="连接_Click" Height="60" Width="80" VerticalAlignment="Center"  Margin="10 0 0 0"
+                        HorizontalContentAlignment="Center"/>
+                <Border x:Name="Led1" Grid.Column="1" Background="DarkRed" CornerRadius="35" Height="70" Width="70" HorizontalAlignment="Center" Margin="20" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button Height="40" Width="40" Content="使能" Click="使能_click"/>
+                <Border x:Name="Led2" Grid.Column="1" Background="Yellow" CornerRadius="20" Height="40" Width="40" HorizontalAlignment="Center" Margin="20" />
+
+            </StackPanel>
+
+        </Grid>
+        <Button x:Name="Send" Grid.Row="0" Grid.Column="1"  Click="Send_Click" Content="点到点Send!" Width="70" Height="40"
+                HorizontalAlignment="Left" Margin="0 0 0 0" />
+        <Grid Grid.Column="1" Grid.Row="1" Margin="5,0,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Content="Joint1_Real:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Grid.Row="1" Content="Joint2_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Grid.Row="2" Content="Joint3_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Grid.Row="3" Content="Joint4_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Grid.Row="4" Content="Joint5_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Grid.Row="5" Content="Joint6_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Grid.Row="6" Content="Joint7_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Grid.Row="7" Content="Joint8_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            <TextBlock 
+             Height="40"
+                Text="{Binding Var0}" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+            <TextBlock Height="40"
+                Text="{Binding Var1}" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+            <TextBlock Height="40"
+                Text="{Binding Var2}" Grid.Row="2" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+            <TextBlock Height="40"
+                Text="{Binding Var3}" Grid.Row="3" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+            <TextBlock Height="40"
+                Text="{Binding Var4}" Grid.Row="4" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+            <TextBlock Height="40"
+                Text="{Binding Var5}" Grid.Row="5" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+            <TextBlock Height="40"
+                Text="{Binding Var6}" Grid.Row="6" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+            <TextBlock Height="40"
+                Text="{Binding Var7}" Grid.Row="7" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+
+        </Grid>
+        <Grid  Grid.Column="0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Content="Joint1_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                Grid.Row="1" Content="Joint2_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                Grid.Row="2" Content="Joint3_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                Grid.Row="3" Content="Joint4_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                Grid.Row="4" Content="Joint5_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                Grid.Row="5" Content="Joint6_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                Grid.Row="6" Content="Joint7_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                Grid.Row="7" Content="Joint8_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBox x:Name="Joint_read1" Grid.Column="1" Text="0.0"
+                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="Joint_read2" Grid.Column="1" HorizontalContentAlignment="Center"
+                     Grid.Row="1"  VerticalContentAlignment="Center"   Text="0.0"/>
+            <TextBox x:Name="Joint_read3" Grid.Column="1" HorizontalContentAlignment="Center"
+                     Grid.Row="2"  VerticalContentAlignment="Center"   Text="0.0"/>
+            <TextBox x:Name="Joint_read4" Grid.Column="1" HorizontalContentAlignment="Center"
+                     Grid.Row="3"  VerticalContentAlignment="Center"   Text="0.0"/>
+            <TextBox x:Name="Joint_read5" Grid.Column="1" HorizontalContentAlignment="Center"
+                     Grid.Row="4"  VerticalContentAlignment="Center"   Text="0.0"/>
+            <TextBox x:Name="Joint_read6" Grid.Column="1" HorizontalContentAlignment="Center"
+                     Grid.Row="5"  VerticalContentAlignment="Center"   Text="0.0"/>
+            <TextBox x:Name="Joint_read7" Grid.Column="1" HorizontalContentAlignment="Center"
+                     Grid.Row="6"  VerticalContentAlignment="Center"   Text="0.0"/>
+            <TextBox x:Name="Joint_read8" Grid.Column="1" HorizontalContentAlignment="Center"
+                     Grid.Row="7"  VerticalContentAlignment="Center"   Text="0.0"/>
+        </Grid>
+        <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right">
+            <Label Content="盾构机换刀机器人8轴测试界面V0 23/3/10 --by 杨强" Name="时间label" FontSize="16"/>
+        </StackPanel>
+    </Grid>
+</Window>
