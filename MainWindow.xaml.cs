@@ -12,7 +12,7 @@ namespace 盾构机机器人操作界面V0
 
 	public partial class MainWindow : Window
 	{
-		public float[] joint_theta_to_servo = new float[8];
+		public float[] joint_theta_to_servo = new float[9];
 		public Int32 Command = 0;
 		public bool Command_flag = false;
 
@@ -22,7 +22,6 @@ namespace 盾构机机器人操作界面V0
 			InitializeComponent();
 			DataContext = user;
 			user.Var_state = "未连接!";
-			user.Var0 = "23.4";
 		}
 
 		private void 连接_Click(object sender, RoutedEventArgs e)
@@ -45,6 +44,17 @@ namespace 盾构机机器人操作界面V0
 					th_status.Start();
 					var th_order_send = new Thread(this.Th_Order_send);
 					th_order_send.Start();
+					Thread.Sleep(1000);
+					Joint_read1.Text = user.Var0;
+					Joint_read2.Text = user.Var1;
+					Joint_read3.Text = user.Var2;
+					Joint_read4.Text = user.Var3;
+					Joint_read5.Text = user.Var4;
+					Joint_read6.Text = user.Var5;
+					Joint_read7.Text = user.Var6;
+					Joint_read8.Text = user.Var7;
+					Joint_read9.Text = user.Var8;
+
 				}
 				catch
 				{
@@ -60,8 +70,8 @@ namespace 盾构机机器人操作界面V0
 			{
 				if (Command_flag)
 				{
-					Command = 0;
-					Led2.Background = Brushes.Yellow;
+					Command &= 0b00;
+					Led2.Background = Brushes.DarkRed;
 					Command_flag = false;
 				}
 				else
@@ -82,6 +92,7 @@ namespace 盾构机机器人操作界面V0
 			{
 				if ((Command & 0b10)==0b10)
 				{
+					Command |= 0b100;
 					Single[] data = new Single[1024];
 					var string1 = Joint_read1.Text;
 					var string2 = Joint_read2.Text;
@@ -91,6 +102,7 @@ namespace 盾构机机器人操作界面V0
 					var string6 = Joint_read6.Text;
 					var string7 = Joint_read7.Text;
 					var string8 = Joint_read8.Text;
+					var string9 = Joint_read9.Text;
 					joint_theta_to_servo[0] = Convert.ToSingle(string1);
 					joint_theta_to_servo[1] = Convert.ToSingle(string2);
 					joint_theta_to_servo[2] = Convert.ToSingle(string3);
@@ -99,6 +111,9 @@ namespace 盾构机机器人操作界面V0
 					joint_theta_to_servo[5] = Convert.ToSingle(string6);
 					joint_theta_to_servo[6] = Convert.ToSingle(string7);
 					joint_theta_to_servo[7] = Convert.ToSingle(string8);
+					joint_theta_to_servo[8] = Convert.ToSingle(string9);
+					Thread.Sleep(500);
+					Command &= 0b011;
 				}
 				else
 				{
@@ -126,6 +141,7 @@ namespace 盾构机机器人操作界面V0
 					user.Var5 = Convert.ToString(getdata[5]);
 					user.Var6 = Convert.ToString(getdata[6]);
 					user.Var7 = Convert.ToString(getdata[7]);
+					user.Var8 = Convert.ToString(getdata[8]);
 				}
 				catch { };
 
@@ -139,19 +155,20 @@ namespace 盾构机机器人操作界面V0
 				byte[] Data_to_Server = new byte[1024];
 				var Head_Check_Byte = BitConverter.GetBytes(22);
 				var Command_Byte = BitConverter.GetBytes(Command);
-				byte[][] temp_joint = new byte[8][];
-				for (int i = 0; i < 8; i++)
+				Head_Check_Byte.CopyTo(Data_to_Server, 0);
+				Command_Byte.CopyTo(Data_to_Server, 4);
+				byte[][] temp_joint = new byte[9][];
+				for (int i = 0; i < 9; i++)
 				{
 					temp_joint[i] = BitConverter.GetBytes(joint_theta_to_servo[i]);
 				}
-				Head_Check_Byte.CopyTo(Data_to_Server, 0);
-				Command_Byte.CopyTo(Data_to_Server, 4);
-				for (int j = 0; j < 8; j++)
+
+				for (int j = 0; j < 9; j++)
 				{
 					temp_joint[j].CopyTo(Data_to_Server, j * 4 + 8);
 				}
 				Mysocket.mysocket_send2(Data_to_Server);
-				Thread.Sleep(300);
+				Thread.Sleep(100);
 			}
 		}
 
@@ -171,6 +188,7 @@ public class MyData_UPDATE : INotifyPropertyChanged
 	private string? _var_get_joint_theta5;//关节5的角度值（status)
 	private string? _var_get_joint_theta6;//关节6的角度值（status)
 	private string? _var_get_joint_theta7;//关节7的角度值（status)
+	private string? _var_get_joint_theta8;//关节8的角度值（status)
 	public string? Var_state
 	{
 		get { return _var_state; }
@@ -250,6 +268,15 @@ public class MyData_UPDATE : INotifyPropertyChanged
 		{
 			_var_get_joint_theta7 = value;
 			OnPropertyChanged(nameof(Var7));
+		}
+	}
+	public string? Var8
+	{
+		get { return _var_get_joint_theta8; }
+		set
+		{
+			_var_get_joint_theta8 = value;
+			OnPropertyChanged(nameof(Var8));
 		}
 	}
 	public event PropertyChangedEventHandler? PropertyChanged;

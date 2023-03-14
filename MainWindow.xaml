@@ -50,6 +50,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Label 
                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
@@ -75,9 +76,12 @@
             <Label 
                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                 Grid.Row="7" Content="Joint8_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                Grid.Row="8" Content="Joint9_Real:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
             <TextBlock 
              Height="40"
-                Text="{Binding Var0}" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
+                Text="{Binding Var0}" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Row="0" Grid.Column="1"/>
             <TextBlock Height="40"
                 Text="{Binding Var1}" Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
             <TextBlock Height="40"
@@ -92,7 +96,8 @@
                 Text="{Binding Var6}" Grid.Row="6" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
             <TextBlock Height="40"
                 Text="{Binding Var7}" Grid.Row="7" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
-
+            <TextBlock Height="40"
+                Text="{Binding Var8}" Grid.Row="8" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"  Grid.Column="1"/>
         </Grid>
         <Grid  Grid.Column="0" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -100,6 +105,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -133,8 +139,12 @@
             <Label 
                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
                 Grid.Row="7" Content="Joint8_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label 
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                Grid.Row="8" Content="Joint9_Target:" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBox x:Name="Joint_read1" Grid.Column="1" Text="0.0"
-                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                     
+                     Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             <TextBox x:Name="Joint_read2" Grid.Column="1" HorizontalContentAlignment="Center"
                      Grid.Row="1"  VerticalContentAlignment="Center"   Text="0.0"/>
             <TextBox x:Name="Joint_read3" Grid.Column="1" HorizontalContentAlignment="Center"
@@ -149,6 +159,8 @@
                      Grid.Row="6"  VerticalContentAlignment="Center"   Text="0.0"/>
             <TextBox x:Name="Joint_read8" Grid.Column="1" HorizontalContentAlignment="Center"
                      Grid.Row="7"  VerticalContentAlignment="Center"   Text="0.0"/>
+            <TextBox x:Name="Joint_read9" Grid.Column="1" HorizontalContentAlignment="Center"
+                     Grid.Row="8"  VerticalContentAlignment="Center"   Text="0.0"/>
         </Grid>
         <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right">
             <Label Content="盾构机换刀机器人8轴测试界面V0 23/3/10 --by 杨强" Name="时间label" FontSize="16"/>

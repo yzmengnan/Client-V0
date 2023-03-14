@@ -67,31 +67,22 @@ namespace 盾构机机器人操作界面V0
 		{
 			myClient.Shutdown(SocketShutdown.Both);
 			myClient.Close();
-			//myClient.Dispose();
 		}
 
 		public static async Task<float[]> SocketReceivedAsync()
 		{
 			var received = await myClient.ReceiveAsync(buffer, SocketFlags.None);
 			//_ = myClient.ReceiveAsync(buffer, SocketFlags.None);
-			for (int i = 0; i < 8; i++)
+			for (int i = 0; i < 9; i++)
 			{
 				Getdata[i] = BitConverter.ToSingle(buffer, i * 4);
 			}
-			//Getdata[0] = BitConverter.ToSingle(buffer, 0);
-			//Getdata[1] = BitConverter.ToSingle(buffer, 4);
-			//Getdata[2] = BitConverter.ToSingle(buffer, 8);
-			//Getdata[3] = BitConverter.ToSingle(buffer, 12);
-			//Getdata[4] = BitConverter.ToSingle(buffer, 16);
-			//Getdata[5] = BitConverter.ToSingle(buffer, 20);
-			//Getdata[6] = BitConverter.ToSingle(buffer, 24);
-			//Getdata[7] = BitConverter.ToSingle(buffer, 28);
+
 
 			return Getdata;
 		}
 
-		private static float[] message = { 2.54f, 1.256f };
 		private static byte[] buffer = new byte[1024];
-		public static float[] Getdata = new float[8];
+		public static float[] Getdata = new float[9];
 	}
 }
