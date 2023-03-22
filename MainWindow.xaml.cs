@@ -22,6 +22,8 @@ namespace 盾构机机器人操作界面V0
 			InitializeComponent();
 			DataContext = user;
 			user.Var_state = "未连接!";
+			var temp = BitConverter.GetBytes(3.24f);
+			testtext.Text = Convert.ToString(BitConverter.ToSingle(temp,0));
 		}
 
 		private void 连接_Click(object sender, RoutedEventArgs e)

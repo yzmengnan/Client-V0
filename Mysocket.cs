@@ -77,11 +77,8 @@ namespace 盾构机机器人操作界面V0
 			{
 				Getdata[i] = BitConverter.ToSingle(buffer, i * 4);
 			}
-
-
 			return Getdata;
 		}
-
 		private static byte[] buffer = new byte[1024];
 		public static float[] Getdata = new float[9];
 	}

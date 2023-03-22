@@ -38,6 +38,7 @@
             <Button x:Name="Send"   Click="Send_Click" Content="点到点Send!" Width="70" Height="40"
                 HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 0" />
             <Button x:Name="CSP_ENABLE" Width="80" Margin="20 0 0 0" Content="CSP ENABLE!" Click="CSP_ENABLE_Click"/>
+            <TextBlock  x:Name="testtext" Text="dabgsdgdsagds"/>
         </StackPanel>
        
         <Grid Grid.Column="1" Grid.Row="1" Margin="5,0,5,0">
